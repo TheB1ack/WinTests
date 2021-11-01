@@ -1,2 +1,2 @@
 # WinTests
-UWP C# project for Functional Programming
+WPF C# project for Functional Programming
