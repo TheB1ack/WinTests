@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using WinTests.Views;
+using Unity;
+using WinTests.Services;
 
 namespace WinTests
 {
@@ -7,8 +8,12 @@ namespace WinTests
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var window = new MainWindow();
-            window.Show();
+            IUnityContainer container = new UnityContainer();
+
+            container.RegisterType<IPageNavigationService, PageNavigationService>();
+
+            MainWindow mainWindow = container.Resolve<MainWindow>();
+            mainWindow.Show();
         }
     }
 }

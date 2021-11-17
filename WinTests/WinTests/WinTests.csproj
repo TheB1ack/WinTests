@@ -7,10 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
-    <Folder Include="Controls\" />
+    <None Remove="Resources\Images\arrow_left.png" />
+    <None Remove="Resources\Images\arrow_right.png" />
+    <None Remove="Resources\Images\book.png" />
+    <None Remove="Resources\Images\note.png" />
+    <None Remove="Resources\Images\selected_arrow_right.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\arrow_left.png" />
+    <Resource Include="Resources\Images\arrow_right.png" />
+    <Resource Include="Resources\Images\book.png" />
+    <Resource Include="Resources\Images\note.png" />
+    <Resource Include="Resources\Images\selected_arrow_right.png" />
   </ItemGroup>
 
 </Project>
