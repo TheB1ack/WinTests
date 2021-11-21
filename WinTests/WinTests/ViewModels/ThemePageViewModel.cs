@@ -1,20 +1,21 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using WinTests.Controls;
 using WinTests.Models.Subtheme;
 using WinTests.Models.Theme;
-using WinTests.Services;
+using WinTests.Services.PageNavigation;
 using WinTests.Views;
 
 namespace WinTests.ViewModels
 {
     public class ThemePageViewModel : BaseViewModel
     {
-        private int frameContainerHash;
         private readonly IPageNavigationService navigationService;
-        public ThemePageViewModel(IPageNavigationService navigationService, int frameContainerHash) : base()
+
+        private int frameContainerHash;
+
+        public ThemePageViewModel(int frameContainerHash) : base()
         {
-            this.navigationService = navigationService;
+            this.navigationService = App.Resolve<IPageNavigationService>();
             this.frameContainerHash = frameContainerHash;
         }
 
@@ -33,13 +34,15 @@ namespace WinTests.ViewModels
 
         private void OnSubThemeTappedCommand(object item)
         {
-            var subTheme = item as SubthemeViewModel;
+            var subTheme = item as SubThemeViewModel;
 
             if (subTheme is not null)
             {
+                subTheme.ThemeTitle = SelectedTheme.Title;
+
                 var page = new SubThemePageView
                 {
-                    ViewModel = new SubThemePageViewModel(navigationService, frameContainerHash)
+                    ViewModel = new SubThemePageViewModel(frameContainerHash)
                     {
                         SelectedSubTheme = subTheme,
                     },
@@ -51,7 +54,22 @@ namespace WinTests.ViewModels
 
         private void OnTestTappedCommand(object item)
         {
-            var subTheme = item as SubthemeViewModel;
+            var subTheme = item as SubThemeViewModel;
+
+            if (subTheme is not null)
+            {
+                subTheme.ThemeTitle = SelectedTheme.Title;
+
+                var page = new TestsPageView
+                {
+                    ViewModel = new TestsPageViewModel(frameContainerHash)
+                    {
+                        SelectedSubTheme = subTheme,
+                    },
+                };
+
+                navigationService.NavigateTo(page, frameContainerHash);
+            }
         }
     }
 }

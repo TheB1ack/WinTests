@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace WinTests.Services
+namespace WinTests.Services.PageNavigation
 {
     public interface IPageNavigationService
     {
@@ -13,5 +13,9 @@ namespace WinTests.Services
         void GoBack();
 
         void Clear(int id);
+
+        public void GoBackToRoot(int id);
+
+        public void GoBackToRoot();
     }
 }

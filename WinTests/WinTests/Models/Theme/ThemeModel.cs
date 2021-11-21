@@ -7,6 +7,6 @@ namespace WinTests.Models.Theme
     {
         public string Title { get; set; }
 
-        public IEnumerable<SubthemeModel> SubThemes { get; set; }
+        public IEnumerable<SubThemeModel> SubThemes { get; set; }
     }
 }

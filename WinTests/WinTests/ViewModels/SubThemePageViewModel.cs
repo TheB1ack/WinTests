@@ -1,22 +1,25 @@
 ﻿using System.Windows.Input;
 using WinTests.Controls;
 using WinTests.Models.Subtheme;
-using WinTests.Services;
+using WinTests.Services.PageNavigation;
+using WinTests.Views;
 
 namespace WinTests.ViewModels
 {
     public class SubThemePageViewModel : BaseViewModel
     {
-        private int frameContainerHash;
         private readonly IPageNavigationService navigationService;
-        public SubThemePageViewModel(IPageNavigationService navigationService, int frameContainerHash) : base()
+
+        private int frameContainerHash;
+
+        public SubThemePageViewModel(int frameContainerHash) : base()
         {
-            this.navigationService = navigationService;
+            this.navigationService = App.Resolve<IPageNavigationService>();
             this.frameContainerHash = frameContainerHash;
         }
 
-        private SubthemeViewModel selectedSubTheme;
-        public SubthemeViewModel SelectedSubTheme
+        private SubThemeViewModel selectedSubTheme;
+        public SubThemeViewModel SelectedSubTheme
         {
             get => selectedSubTheme;
             set => SetProperty(ref selectedSubTheme, value);
@@ -35,8 +38,15 @@ namespace WinTests.ViewModels
 
         private void OnGoToTestsTappedCommand(object item)
         {
-           //navigate to tests
-        }
+            var page = new TestsPageView
+            {
+                ViewModel = new TestsPageViewModel(frameContainerHash)
+                {
+                    SelectedSubTheme = SelectedSubTheme,
+                },
+            };
 
+            navigationService.NavigateTo(page, frameContainerHash);
+        }
     }
 }

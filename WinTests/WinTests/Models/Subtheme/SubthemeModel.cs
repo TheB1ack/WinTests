@@ -4,7 +4,7 @@ using WinTests.Models.Test;
 
 namespace WinTests.Models.Subtheme
 {
-    public class SubthemeModel
+    public class SubThemeModel
     {
         public string Title { get; set; }
 
@@ -14,7 +14,7 @@ namespace WinTests.Models.Subtheme
 
         public IEnumerable<TestModel> Tests { get; set; }
 
-        public ESubThemeState SubThemeState { get; set; }
+        public ETestStateState SubThemeState { get; set; }
 
         public int CorrectAnswersCount { get; set; }
     }

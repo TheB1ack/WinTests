@@ -8,11 +8,11 @@ namespace WinTests.Converters
 {
     public class SubThemeStateToColorConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => (ESubThemeState)value switch
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => (ETestStateState)value switch
             {
-                ESubThemeState.None => Brushes.White,
-                ESubThemeState.Passed => new SolidColorBrush(Color.FromRgb(222, 255, 219)),
-                ESubThemeState.Failed => new SolidColorBrush(Color.FromRgb(255, 219, 219)),
+                ETestStateState.None => Brushes.White,
+                ETestStateState.Passed => new SolidColorBrush(Color.FromRgb(222, 255, 219)),
+                ETestStateState.Failed => new SolidColorBrush(Color.FromRgb(255, 219, 219)),
             };
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => value;

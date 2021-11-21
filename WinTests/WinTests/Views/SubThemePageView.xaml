@@ -61,7 +61,16 @@
             <Image Grid.Column="1"
                    HorizontalAlignment="Right"
                    Margin="0, 0, 15, 10"
-                   Source="../Resources/Images/arrow_right.png"/>
+                   Source="../Resources/Images/arrow_right.png">
+                
+                <Image.InputBindings>
+
+                    <MouseBinding Command="{Binding GoToTestsTappedCommand}"
+                                  MouseAction="LeftClick"/>
+
+                </Image.InputBindings>
+
+            </Image>
 
         </Grid>
         

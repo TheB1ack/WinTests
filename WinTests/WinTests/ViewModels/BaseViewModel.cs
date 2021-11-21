@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace WinTests.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,6 +38,10 @@ namespace WinTests.ViewModels
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             PropertyChanged?.Invoke(this, args);
+        }
+
+        public virtual void Dispose()
+        {
         }
     }
 }

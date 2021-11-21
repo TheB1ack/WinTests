@@ -5,28 +5,30 @@ using WinTests.ViewModels;
 
 namespace WinTests.Views
 {
-    public partial class ThemePageView : Page
+    public partial class MainPageView : Page
     {
         [Dependency]
-        public ThemePageViewModel ViewModel
+        public MainPageViewModel ViewModel
         {
-            get => DataContext as ThemePageViewModel;
+            get => DataContext as MainPageViewModel;
             set
             {
                 DataContext = value;
+
+                ViewModel.FrameContainer = frameContainer;
             }
         }
 
-        public ThemePageView()
+        public MainPageView()
         {
-            InitializeComponent();
-
             this.Loaded += OnLoaded;
+
+            InitializeComponent();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            dockPanel.MaxHeight = ActualHeight;
+            ViewModel.OnLoaded();
         }
     }
 }

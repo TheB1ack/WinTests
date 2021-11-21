@@ -14,20 +14,13 @@ namespace WinTests
             {
                 DataContext = value;
 
-                ViewModel.FrameContainer = frameContainer;
+                ViewModel.FrameContainer = mainFrameContainer;
             }
         }
 
         public MainWindow()
         {
-            this.Loaded += OnLoaded;
-
             InitializeComponent();
-        }
-
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            ViewModel.OnLoaded();
         }
     }
 }

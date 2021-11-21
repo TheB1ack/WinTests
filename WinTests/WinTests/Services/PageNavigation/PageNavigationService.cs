@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Controls;
 
-namespace WinTests.Services
+namespace WinTests.Services.PageNavigation
 {
     public class PageNavigationService : IPageNavigationService
     {
@@ -30,7 +30,9 @@ namespace WinTests.Services
 
                     navigationStack.Add(frame, pages);
 
-                    frame.Navigate(page, parameter);
+                    frame.NavigationService.Navigate(page, parameter);
+
+                    lastFrameId = frame.GetHashCode();
                 }
                 else
                 {
@@ -44,6 +46,8 @@ namespace WinTests.Services
 
                     pages.Push(page);
                     existFrame.Navigate(page, parameter);
+
+                    lastFrameId = existFrame.GetHashCode();
                 }
             }
         }
@@ -65,7 +69,9 @@ namespace WinTests.Services
                     }
 
                     pages.Push(page);
-                    frame.Navigate(page, parameter);
+                    frame.NavigationService.Navigate(page, parameter);
+
+                    lastFrameId = frame.GetHashCode();
                 }
             }
         }
@@ -80,9 +86,9 @@ namespace WinTests.Services
             {
                 navigationStack.TryGetValue(frame, out pages);
 
-                while (frame.CanGoBack)
+                while (frame.NavigationService.CanGoBack)
                 {
-                    frame.GoBack();
+                    frame.NavigationService.GoBack();
                 }
 
                 pages?.Clear();
@@ -95,12 +101,14 @@ namespace WinTests.Services
 
             var frame = navigationStack.Keys.FirstOrDefault(x => x.GetHashCode() == id);
 
-            if (frame?.CanGoBack ?? false)
+            if (frame?.NavigationService.CanGoBack ?? false)
             {
                 navigationStack.TryGetValue(frame, out pages);
 
-                frame.GoBack();
+                frame.NavigationService.GoBack();
                 pages?.Pop();
+
+                lastFrameId = frame.GetHashCode();
             }
         }
 
@@ -112,12 +120,53 @@ namespace WinTests.Services
                 
                 var frame = navigationStack.Keys.FirstOrDefault(x => x.GetHashCode() == lastFrameId);
 
-                if (frame?.CanGoBack ?? false)
+                if (frame?.NavigationService.CanGoBack ?? false)
                 {
                     navigationStack.TryGetValue(frame, out pages);
 
-                    frame.GoBack();
+                    frame.NavigationService.GoBack();
                     pages?.Pop();
+                }
+            }
+        }
+
+        public void GoBackToRoot(int id)
+        {
+            Stack<Page> pages;
+
+            var frame = navigationStack.Keys.FirstOrDefault(x => x.GetHashCode() == id);
+
+            if (frame?.NavigationService.CanGoBack ?? false)
+            {
+                navigationStack.TryGetValue(frame, out pages);
+
+                while (pages.Count > 1)
+                {
+                    frame.NavigationService.GoBack();
+                    pages?.Pop();
+                }
+
+                lastFrameId = frame.GetHashCode();
+            }
+        }
+
+        public void GoBackToRoot()
+        {
+            if (lastFrameId is not null)
+            {
+                Stack<Page> pages;
+
+                var frame = navigationStack.Keys.FirstOrDefault(x => x.GetHashCode() == lastFrameId);
+
+                if (frame?.NavigationService.CanGoBack ?? false)
+                {
+                    navigationStack.TryGetValue(frame, out pages);
+
+                    while (pages.Count > 1)
+                    {
+                        frame.NavigationService.GoBack();
+                        pages?.Pop();
+                    }
                 }
             }
         }

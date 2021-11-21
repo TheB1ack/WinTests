@@ -5,7 +5,7 @@ using WinTests.ViewModels;
 
 namespace WinTests.Models.Subtheme
 {
-    public class SubthemeViewModel : BaseViewModel
+    public class SubThemeViewModel : BaseViewModel
     {
         private string title;
         public string Title
@@ -44,8 +44,8 @@ namespace WinTests.Models.Subtheme
 
         public int TestsCount => Tests?.Count ?? 0;
 
-        private ESubThemeState subThemeState;
-        public ESubThemeState SubThemeState
+        private ETestStateState subThemeState;
+        public ETestStateState SubThemeState
         {
             get => subThemeState;
             set => SetProperty(ref subThemeState, value);

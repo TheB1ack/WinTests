@@ -1,6 +1,6 @@
 ﻿namespace WinTests.Enums
 {
-    public enum ESubThemeState
+    public enum ETestStateState
     {
         None,
         Passed,

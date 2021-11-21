@@ -33,7 +33,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Visible"
                       CanContentScroll="True">
             
-        <ItemsControl  Margin="20, 0, 20, 0"
+        <ItemsControl Margin="20, 0, 20, 0"
                       BorderThickness="0"
                       x:Name="itemsControl"
                       VerticalAlignment="Stretch"
@@ -57,106 +57,106 @@
                                    RadiusX="6"
                                    RadiusY="6"
                                    Fill="{Binding SubThemeState, Converter={StaticResource subThemeStateToColorConverter}}"/>
-                            
-                            <Grid VerticalAlignment="Stretch"
-                                  HorizontalAlignment="Stretch"
-                                  Margin="5, 8"
-                                  Background="{Binding SubThemeState, Converter={StaticResource subThemeStateToColorConverter}}">
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="18"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="80"/>
-                                </Grid.ColumnDefinitions>
+                        <Grid VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Margin="5, 8"
+                                Background="{Binding SubThemeState, Converter={StaticResource subThemeStateToColorConverter}}">
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
 
-                                <Image Grid.Row="0"
-                                   Grid.Column="0"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Margin="0, 0, 0, 10"
-                                   Source="../Resources/Images/book.png"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0"
-                                   Grid.Column="1"
-                                   Padding="0"
-                                   FontWeight="Bold"
-                                   FontSize="13"
-                                   Margin="10, 0, 0, 10"
-                                   Content="{Binding Title}"/>
+                            <Image Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="0, 0, 0, 10"
+                                Source="../Resources/Images/book.png"/>
 
-                                <Rectangle Grid.Row="0"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       VerticalAlignment="Stretch"
-                                       HorizontalAlignment="Stretch"
-                                       Fill="AliceBlue"
-                                       Opacity="0">
+                            <Label Grid.Row="0"
+                                Grid.Column="1"
+                                Padding="0"
+                                FontWeight="Bold"
+                                FontSize="13"
+                                Margin="10, 0, 0, 10"
+                                Content="{Binding Title}"/>
 
-                                    <Rectangle.InputBindings>
+                            <Rectangle Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Fill="AliceBlue"
+                                Opacity="0">
 
-                                        <MouseBinding Command="{Binding DataContext.SubThemeTappedCommand, Source={x:Reference themeView}}"
-                                                  CommandParameter="{Binding .}"
-                                                  MouseAction="LeftClick"/>
+                                <Rectangle.InputBindings>
 
-                                    </Rectangle.InputBindings>
+                                    <MouseBinding Command="{Binding DataContext.SubThemeTappedCommand, Source={x:Reference themeView}}"
+                                        CommandParameter="{Binding .}"
+                                        MouseAction="LeftClick"/>
 
-                                </Rectangle>
+                                </Rectangle.InputBindings>
 
-                                <Image Grid.Row="1"
-                                   Grid.Column="0"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Source="../Resources/Images/note.png"/>
+                            </Rectangle>
 
-                                <Label Grid.Row="1"
-                                   Grid.Column="1"
-                                   Padding="0"
-                                   FontWeight="Bold"
-                                   FontSize="13"
-                                   Margin="10, 0, 0, 0"
-                                   Content="{Binding TestTitle}"/>
+                            <Image Grid.Row="1"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Source="../Resources/Images/note.png"/>
 
-                                <Rectangle Grid.Row="1"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       VerticalAlignment="Stretch"
-                                       HorizontalAlignment="Stretch"
-                                       Fill="AliceBlue"
-                                       Opacity="0">
+                            <Label Grid.Row="1"
+                                Grid.Column="1"
+                                Padding="0"
+                                FontWeight="Bold"
+                                FontSize="13"
+                                Margin="10, 0, 0, 0"
+                                Content="{Binding TestTitle}"/>
 
-                                    <Rectangle.InputBindings>
+                            <Rectangle Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        VerticalAlignment="Stretch"
+                                        HorizontalAlignment="Stretch"
+                                        Fill="AliceBlue"
+                                        Opacity="0">
 
-                                            <MouseBinding Command="{Binding DataContext.TestTappedCommand, Source={x:Reference themeView}}"
-                                                  CommandParameter="{Binding .}"
-                                                  MouseAction="LeftClick"/>
+                                <Rectangle.InputBindings>
 
-                                    </Rectangle.InputBindings>
+                                    <MouseBinding Command="{Binding DataContext.TestTappedCommand, Source={x:Reference themeView}}"
+                                        CommandParameter="{Binding .}"
+                                        MouseAction="LeftClick"/>
 
-                                </Rectangle>
+                                </Rectangle.InputBindings>
 
-                                <StackPanel Grid.Row="1"
-                                        Grid.Column="2"
-                                        HorizontalAlignment="Center"
-                                        Orientation="Horizontal">
+                            </Rectangle>
 
-                                    <Label Content="{Binding CorrectAnswersCount}"
-                                       Padding="0"/>
+                            <StackPanel Grid.Row="1"
+                                Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
 
-                                    <Label Content="/"
-                                       Padding="0"/>
+                                <Label Content="{Binding CorrectAnswersCount}"
+                                    Padding="0"/>
 
-                                    <Label Content="{Binding TestsCount}"
-                                       Padding="0"/>
+                                <Label Content="/"
+                                    Padding="0"/>
 
-                                </StackPanel>
+                                <Label Content="{Binding TestsCount}"
+                                    Padding="0"/>
 
-                            </Grid>
-                            
+                            </StackPanel>
+
+                        </Grid>
+
                     </Grid>
 
                 </DataTemplate>

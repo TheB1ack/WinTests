@@ -14,8 +14,8 @@ namespace WinTests.Models.Theme
             set => SetProperty(ref title, value);
         }
 
-        private ObservableCollection<SubthemeViewModel> subThemes;
-        public ObservableCollection<SubthemeViewModel> SubThemes 
+        private ObservableCollection<SubThemeViewModel> subThemes;
+        public ObservableCollection<SubThemeViewModel> SubThemes 
         { 
             get => subThemes; 
             set => SetProperty(ref subThemes, value);
