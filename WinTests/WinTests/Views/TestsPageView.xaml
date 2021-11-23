@@ -44,6 +44,7 @@
         <DataTemplate x:Key="SingleChoice">
 
             <StackPanel Orientation="Horizontal"
+                        x:Name="stack"
                         Margin="0, 2">
 
                 <RadioButton IsChecked="{Binding IsSelected}"
@@ -52,12 +53,14 @@
                              IsEnabled="{Binding DataContext.IsTestsActive, Source={x:Reference testsView}}"
                              VerticalAlignment="Center"/>
 
-                <Label Content="{Binding Title}"
-                       Padding="0"
-                       Margin="10, 0, 0, 2"
-                       VerticalAlignment="Center"
-                       FontWeight="Medium"/>
-
+                <TextBlock Text="{Binding Title}"
+                           Padding="0"
+                           TextWrapping="Wrap"
+                           Width="470"
+                           VerticalAlignment="Center"
+                           Margin="10, 0, 0, 2"
+                           FontWeight="Medium"/>
+                    
             </StackPanel>
            
         </DataTemplate>
@@ -72,11 +75,13 @@
                           IsEnabled="{Binding DataContext.IsTestsActive, Source={x:Reference testsView}}"
                           VerticalAlignment="Center"/>
 
-                <Label Content="{Binding Title}"
-                       Padding="0"
-                       Margin="10, 0, 0, 2"
-                       VerticalAlignment="Center"
-                       FontWeight="Medium"/>
+                <TextBlock Text="{Binding Title}"
+                           Padding="0"
+                           Margin="10, 0, 0, 2"
+                           TextWrapping="Wrap"
+                           Width="470"
+                           VerticalAlignment="Center"
+                           FontWeight="Medium"/>
 
             </StackPanel>
             
@@ -99,12 +104,13 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0"
-               Padding="0"
-               Content="{Binding SelectedSubTheme.Title}"
-               Margin="20, 8"
-               FontWeight="Bold"
-               FontSize="25"/>
+        <TextBlock Grid.Row="0"
+                   Padding="0"
+                   TextTrimming="WordEllipsis" 
+                   Text="{Binding SelectedSubTheme.Title}"
+                   Margin="20, 8"
+                   FontWeight="Bold"
+                   FontSize="25"/>
 
         <Label Grid.Row="1"
                Padding="0"
@@ -169,12 +175,14 @@
                                                    Width="23"
                                                    Source="../Resources/Images/book.png"/>
 
-                                            <Label Padding="0"
-                                                   FontWeight="Bold"
-                                                   Margin="6, 0, 0, 2"
-                                                   FontSize="15"
-                                                   VerticalAlignment="Center"
-                                                   Content="{Binding Question}"/>
+                                            <TextBlock Padding="0"
+                                                       FontWeight="Bold"
+                                                       Margin="6, 0, 0, 2"
+                                                       FontSize="15"
+                                                       TextWrapping="Wrap"
+                                                       Width="470"
+                                                       VerticalAlignment="Center"
+                                                       Text="{Binding Question}"/>
 
                                         </StackPanel>
 

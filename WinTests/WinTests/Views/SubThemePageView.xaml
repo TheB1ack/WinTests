@@ -17,12 +17,13 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0"
-               Padding="0"
-               Content="{Binding SelectedSubTheme.ThemeTitle}"
-               Margin="20, 15"
-               FontWeight="Bold"
-               FontSize="30"/>
+        <TextBlock Grid.Row="0"
+                   TextTrimming="WordEllipsis" 
+                   Padding="0"
+                   Text="{Binding SelectedSubTheme.ThemeTitle}"
+                   Margin="20, 15"
+                   FontWeight="Bold"
+                   FontSize="30"/>
 
         <Label Grid.Row="1"
                Padding="0"
@@ -31,11 +32,14 @@
                FontWeight="Bold"
                FontSize="15"/>
 
-        <TextBlock Grid.Row="2"
-                   VerticalAlignment="Stretch"
-                   TextWrapping="Wrap"
-                   Margin="20, 0"
-                   Text="{Binding SelectedSubTheme.Content}"/>
+        <ScrollViewer Grid.Row="2">
+            
+                <TextBlock VerticalAlignment="Stretch"
+                           TextWrapping="Wrap"
+                           Margin="20, 0"
+                           Text="{Binding SelectedSubTheme.Content}"/>
+            
+        </ScrollViewer>
 
         <Grid Grid.Row="3">
             

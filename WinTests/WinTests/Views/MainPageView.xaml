@@ -97,6 +97,8 @@
                      ItemsSource="{Binding Path=ThemesCollection}"
                      SelectedItem="{Binding Path=SelectedItem}"
                      SelectionMode="Single"
+                     HorizontalContentAlignment="Left"
+                     HorizontalAlignment="Left"
                      ItemContainerStyle="{StaticResource myLBStyle}"
                      VerticalAlignment="Stretch">
 
@@ -108,7 +110,7 @@
                               Margin="0, 25, 0, 0">
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="145"/>
                                 <ColumnDefinition Width="25"/>
                             </Grid.ColumnDefinitions>
 
@@ -117,12 +119,13 @@
                                 <RowDefinition Height="1"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="0"
-                                   Grid.Column="0"
-                                   Padding="0"
-                                   FontWeight="Bold"
-                                   FontSize="13"
-                                   Content="{Binding Path=Title}"/>
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Padding="0"
+                                       FontWeight="Bold"
+                                       FontSize="13"
+                                       TextTrimming="WordEllipsis" 
+                                       Text="{Binding Path=Title}"/>
 
                             <Image Grid.Row="0"
                                    Grid.Column="1"
